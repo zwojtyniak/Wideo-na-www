@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/moon.min.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <title>Wideo na WWW</title>
+    <style media="screen">
+      span.code {
+        font-family: monospace !important;
+        color: white;
+      }
+      pre {
+        box-shadow: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Wideo na WWW</h1>
+          <h3>Krótki poradnik</h3>
+        </section>
+
+        <section>
+          <section>
+            <h2>&lt;video&gt; w HTML5</h2>
+          </section>
+
+          <section>
+            <h3>Poznaj HTML5</h3>
+            <p>Dzięki HTML5 dodawanie wideo na stronach internetowych wymaga poznania tylko jednego elementu</p>
+            <pre><code>
+  &lt;video src="moje_wideo.mp4" controls&gt;&lt;/video&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <p>Wideo umieszczamy w sekcji body</p>
+            <pre>
+              <code >
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;title&gt;Wideo&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;video src="./moje_wideo.mp4" controls&gt;&lt;/video&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Rezultat</h3>
+            <video src="./moje_wideo.mp4" controls></video>
+          </section>
+        </section>
+
+
+        <section>
+          <section>
+            <h2>Różne formaty WIDEO</h2>
+          </section>
+		      <section>
+            <h3>Różne formaty wideo</h3>
+            <p>Aby wspierać więcej przeglądarek możemy dodać jedno wideo w wielu formatach</p>
+            <p>W tym celu musimy dodać element <span class="code">source</span> jako dziecko elementu <span class="code">video</span></p>
+          </section>
+
+          <section>
+            <h3>Różne formaty wideo</h3>
+            <pre>
+            <code>
+  &lt;video controls&gt;
+    &lt;source src="moje_wideo.webm"
+            type='video/webm;codecs="vp8, vorbis"'/&gt;
+    &lt;source src="moje_wideo.mp4"
+            type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'/&gt;
+  &lt;/video&gt;
+            </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Różne formaty wideo</h3>
+            <p>W ten sposób przeglądarki wspierające format WebM pobiorą odpowiedni plik, a przeglądarki które nie wspierają tego formatu pobiorą plik mp4</p>
+          </section>
+
+          <section>
+            <h3>Różne formaty WIDEO</h3>
+			      <p>Jeżeli przeglądarka nie może odtworzyć pierwszego pliku, spróbuje odtworzyć następny</p>
+			      <p>Zazwyczaj skorzysta ona z pierwszego od góry formatu, który obsługuje</p>
+
+            <pre><code>
+  &lt;video&gt;
+  &lt;source src="lokalizacja pliku w formacie 1" type="format 1"&gt;
+  &lt;source src="lokalizacja pliku w formacie 2" type="format 2"&gt;
+  (...)
+  Treść alternatywna
+  &lt;/video&gt;
+            </code></pre>
+          </section>
+          <section>
+            <h3>Różne formaty WIDEO</h3>
+			      <p>Jeżeli format pliku wideo nie jest obsługiwany przez przeglądarkę, możemy wyświetlić komunikat o błędzie</p>
+
+			      <pre><code>
+  &lt;video src="./moje_wideo.mp4" controls&gt;
+  Twoja przeglądarka nie obsługuje tego formatu.
+  &lt;/video&gt;
+            </code></pre>
+          </section>
+          <section>
+         <h3>Różne formaty WIDEO</h3>
+		     <p>Jednak lepszym rozwiązaniem od zwykłego tekstu jest zastasowanie alternatywnego odnośnika do pobrania pliku </p>
+		     <pre><code>
+  &lt;video>
+  &lt;source src="./moje_wideo.mp4" type="video/mp4"&gt;
+  &lt;source src="./moje_wideo.ogg" type="video/ogg"&gt;
+  &lta href="./moje_wideo.mp4"&gt;Kliknij, aby pobrać film&lt/a&gt;
+  &lt;/video&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h3> Przeglądarki obsługujące tag &lt;video&gt;</h3>
+		        <img src="./przegladarki.jpg" alt="Przyklad">
+		      </section>
+	     </section>
+
+
+    <section>
+     <section>
+       <h2>Atrybuty elementu &lt;video&gt;</h2>
+     </section>
+		 <section>
+			<h3> Atrybuty odtwarzacza:</h3>
+      <ul>
+        <li><span class="code">controls</span></li>
+      </ul>
+      <p>Atrybut logiczny, który powoduje wyświetlenie domyślnych kontrolek, służących od odtwarzania materiału</p>
+      <p>Najczęściej zawierają one przycisk "odtwarzaj", "zatrzymaj", "wycisz", suwak postępu odtwarzania i głośności</p>
+     </section>
+
+     <section>
+       <h3> Atrybuty odtwarzacza:</h3>
+       <ul>
+         <li><span class="code">loop</span></li>
+       </ul>
+       <p>Atrybut logiczny, który włącza tryb odtwarzania w kółko</p>
+         <video src="./moje_wideo_short.mp4" controls loop></video>
+     </section>
+
+     <section>
+       <h3> Atrybuty odtwarzacza:</h3>
+       <ul>
+         <li><span class="code">muted</span></li>
+       </ul>
+       <p>Atrybut logiczny, który całkowicie wycisza dźwięk w odtwarzaczu</p>
+         <video src="./moje_wideo_short.mp4" controls muted></video>
+     </section>
+
+     <section>
+       <h3> Atrybuty odtwarzacza:</h3>
+       <ul>
+         <li><span class="code">poster</span></li>
+       </ul>
+       <p>Umożliwa ustawienie statycznego obrazka, który wyświetli się w oknie odtwarzania,
+         zanim użytkownik włączy w nim odgrywanie właściwego filmu </p>
+       <p>Można w ten sposób umieścić np. pierwszą znaczącą klatkę z filmu</p>
+       <p>Jako wartość tego atrybutu należy podać lokalizację pliku graficznego</p>
+
+     </section>
+
+     <section>
+       <h3> Atrybuty odtwarzacza:</h3>
+       <ul>
+         <li><span class="code">poster</span></li>
+       </ul>
+       <video style= "
+               display: block;
+               margin: 0 auto;
+               margin-top: 50px;"
+             src="./moje_wideo_short.mp4" controls poster="./nyan_cat.jpg"></video>
+     </section>
+
+     <section>
+       <h3> Atrybuty odtwarzacza:</h3>
+       <ul>
+         <li><span class="code">autoplay</span></li>
+       </ul>
+     <p>Automatycznie odtwarza wideo </p>
+     <pre><code>
+&lt;video src="./moje_wideo.mp4" autoplay&gt; &lt;/video&gt;
+        </code></pre>
+     </section>
+     <section>
+       <h3> Atrybuty odtwarzacza:</h3>
+       <ul>
+         <li><span class="code">width, height</span></li>
+       </ul>
+       <video style= "
+               display: block;
+               margin: 0 auto;
+               margin-top: 50px;" width=100 height=100 src="./moje_wideo_short.mp4" controls></video>
+     </section>
+
+    </section>
+
+
+
+
+        <section>
+          <section>
+            <h2>Dodawanie napisów do &lt;video&gt;</h2>
+          </section>
+
+          <section>
+            <h3>Schemat dodawnia napisów</h3>
+            <pre><code>
+&lt;video&gt;
+	&lt;source src="lokalizacja pliku w formacie 1" type="format 1"&gt;
+	&lt;source src="lokalizacja pliku w formacie 2" type="format 2"&gt;
+	(...)
+	&lt;track src="napisy.vtt" default&gt;
+	(...)
+&lt;/video&gt;
+</code></pre>
+          <p>napisy.vtt to lokalizacja pliku tekstowego z napisami na dysku lub adres URL do pliku w Internecie</p>
+          <p>Dodanie atrybutu default jest konieczne</p>
+          <p>Inaczej napisy mogą nie zostać wyświetlone </p>
+          <p>
+          </section>
+          <section>
+           <h3>Tworzenie pliku z napisami</h3>
+           <p>Plik napisów tworzy się w dowolnym prostym edytorze tekstu</p>
+           <p>Nazwa pliku musi mieć rozszerzenie *.vtt<p>
+           <p>Sama zawartość pliku napisów musi być zapisana zgodnie z ustalonym standardem WebVTT</p>
+          </section>
+          <section>
+           <h3>Tworzenie pliku z napisami</h3>
+           <p>W pierwszej linijce pliku należy obowiązkowo umieścić tekst: WEBVTT i zostawić po nim jedną linijkę przerwy</p>
+           <p>Mówi on, że plik został utworzony zgodnie ze standardem WebVTT</p>
+           <p> Następnie w pliku dodawane są bloki zawierające przedziały czasu, w którym ma się wyświetlać na ekranie tekst oraz sam ten tekst napisów</p>
+          </section>
+
+          <section>
+            <h3>Przykład pliku z napisami</h3>
+            <pre><code>
+WEBVTT
+
+00:00:01.000 --> 00:00:05.000
+Ten napis wyświetli się między pierwszą a piątą sekundą filmu.
+
+00:00:05.000 --> 00:00:10.000
+Ten napis wyświetli się między piątą a dziesiątą sekundą filmu.
+</code></pre>
+          </section>
+
+
+
+          <section>
+            <h3> Wybór języka napisów</h3>
+            <pre><code>
+&lt;video controls src="moje_wideo.mp4"&gt;
+  &lt;track label="Polish" kind="subtitles" srclang="pl" src="napisy.vtt" default&gt;
+  &lt;track label="English" kind="subtitles" srclang="en" src="napisy2.vtt"&gt;
+&lt;/video&gt;
+
+</code></pre>
+          </section>
+          <section>
+            <h3> Rezultat</h3>
+            <video controls src="./moje_wideo.mp4">
+              <track label="Polish" kind="subtitles" srclang="pl" src="./napisy.vtt" default>
+              <track label="English" kind="subtitles" srclang="en" src="./napisy2.vtt">
+            </video>
+          </section>
+
+        </section>
+
+
+
+
+
+        <section>
+          <section>
+            <h2>&lt;video&gt; i Javascript</h2>
+          </section>
+
+          <section>
+            <h3>Sterowanie</h3>
+            <p>Jeśli nie dodamy do wideo atrybutu <span class="code">controls</span> to nie będzie wyświetlany domyślny interfejs obsługi wideo</p>
+            <p>Aby napisać własny interfejs możemy użyć metod i zdarzeń, które udostępnia element <span class="code">video</span></p>
+          </section>
+
+          <section>
+            <h3>Przykładowe metody</h3>
+            <ul>
+              <li><span class="code">load()</span> ładuje wideo na stronę</li>
+              <li><span class="code">play()</span> odtwarza wideo</li>
+              <li><span class="code">pause()</span> zatrzymuje wideo</li>
+              <li><span class="code">canPlayType()</span> sprawdza czy wideo da się odtworzyć</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Przykładowe zdarzenia</h3>
+            <ul>
+              <li><span class="code">loadstart</span> gdy wideo zaczęło się ładować</li>
+              <li><span class="code">ended</span> gdy wideo się zakończyło</li>
+              <li><span class="code">volumechange</span> gdy nastąpiła zmiana głośności</li>
+              <li><span class="code">playing</span> gdy wideo rozpoczęło odtwarzanie</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Metody - implementacja</h3>
+            <pre>
+              <code>
+  var video = document.querySelector("video");
+
+  function playVideo() {
+    video.play();
+  }
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Zdarzenia - implementacja</h3>
+            <pre>
+              <code>
+  var video = document.querySelector("video");
+
+  video.onplaying = function () {
+    console.log("Odtwarzanie wideo")
+  }
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Przykład</h3>
+            <video src="./moje_wideo.mp4" id="ex-video"></video>
+            <div>
+              <button type="button" id="ex-play" onclick="playVideo()" name="play">Play</button>
+              <button type="button" id="ex-pause" onclick="pauseVideo()" name="pause">Pause</button>
+            </div>
+            <p>Status: <span id="ex-playing">ZAŁADOWANO</span></p>
+          </section>
+        </section>
+
+
+
+
+        <section>
+          <section>
+            <h2>&lt;video&gt; - inne aspekty</h2>
+          </section>
+
+          <section>
+            <h3>Media Fragments</h3>
+            <p>Dla przeglądarek wspierających technologię Media Fragments możemy w prosty sposób zdefiniować dokładnie jaki wycinek filmu ma zostać odtworzony</p>
+          </section>
+
+          <section>
+            <h3>Media Fragments</h3>
+            <pre>
+              <code>
+  &lt;!-- po nazwie pliku podajemy #t=czas_początkowy,czas_końcowy --&gt;
+  &lt;!-- czas jest podawany w sekundach lub w formacie hh:mm:ss --&gt;
+  &lt;video src="./moje_wideo.mp4#t=10,13" controls&gt;&lt;/video&gt;
+              </code>
+            </pre>
+
+          </section>
+
+          <section>
+            <h3>Media Fragments - rezultat</h3>
+            <p>Wideo jest odtwarzane od 10 do 13 sekundy</p>
+              <video src="./moje_wideo.mp4#t=10,13" controls></video>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Źródła</h3>
+            <ul>
+              <li>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">Mozilla Developer Network</a>
+              </li>
+              <li>
+                <a href="https://youtu.be/QH2-TGUlwu4">Nyan cat video</a>
+              </li>
+              <li>
+                <a href="http://www.kurshtml.edu.pl/html/video_audio_source,html5.html">Tutorial</a>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Dziękujemy za uwagę</h3>
+            <h5>Jagoda Rybacka</h5>
+            <h5>Zuzanna Wojtyniak</h5>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js" charset="utf-8"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript">
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      defaultTiming: 120,
+      slideNumber: false,
+      history: false,
+      keyboard: true,
+      overview: true,
+      center: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      shuffle: false,
+      fragments: true,
+      embedded: false,
+      help: true,
+      showNotes: false,
+      autoPlayMedia: null,
+      autoSlide: 0,
+      autoSlideStoppable: true,
+      autoSlideMethod: Reveal.navigateNext,
+      mouseWheel: false,
+      hideAddressBar: true,
+      previewLinks: false,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      viewDistance: 3,
+      parallaxBackgroundImage: '',
+      parallaxBackgroundSize: '',
+      parallaxBackgroundHorizontal: null,
+      parallaxBackgroundVertical: null,
+      display: 'block'
+    });
+    </script>
+  </body>
+</html>
